@@ -27,13 +27,13 @@ set +a
 : "${AG_SETUP_DIR:?Variable AG_SETUP_DIR is not set in .env}"
 
 echo "=> Compiling Markdown Templates..."
+mkdir -p compiled
 # Expand variables in the setup documentation
 for file in requirements.md implementation_plan.md system_instructions.md; do
   if [ -f "$file" ]; then
-    # Use envsubst to replace variables, keeping existing variables intact if not defined
-    envsubst < "$file" > "${file}.tmp"
-    mv "${file}.tmp" "$file"
-    echo "   -> Compiled $file"
+    # Use envsubst to replace variables and output to the compiled directory
+    envsubst < "$file" > "compiled/$file"
+    echo "   -> Compiled to compiled/$file"
   fi
 done
 
