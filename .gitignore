@@ -1,0 +1,8 @@
+# Prevent accidental tracking of binary files or secrets
+*.env
+*.pem
+*.key
+.DS_Store
+__pycache__/
+node_modules/
+target/
